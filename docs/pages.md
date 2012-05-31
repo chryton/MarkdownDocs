@@ -26,6 +26,6 @@ The pages section allows you to edit various non-product related items on the si
 10. Last, click the *Save Page* button for the changes to take effect
 
 
-[one]: ../images/about-us-shot.png
-[two]: ../images/choose-image.png
-[three]: ../images/added-image.png
+[one]: {MEDIA_DIR}about-us-shot.png
+[two]: {MEDIA_DIR}choose-image.png
+[three]: {MEDIA_DIR}added-image.png

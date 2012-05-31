@@ -40,7 +40,7 @@ Product recommendations are used when viewing a product detail page. For an exam
 2. If you come to a screen that says "Install Or Login to Directed Edge", enter "centuryproducts" and click *Log In* ![Directed Edge][four]
 3. Click the checkboxes that are similar to the product you are editing
 
-[one]:../images/add-new-product.png
-[two]:../images/inventory.png
-[three]:../images/product-images.png
-[four]:../images/de.png
+[one]:{MEDIA_DIR}add-new-product.png
+[two]:{MEDIA_DIR}inventory.png
+[three]:{MEDIA_DIR}product-images.png
+[four]:{MEDIA_DIR}de.png
