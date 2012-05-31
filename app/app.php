@@ -1,14 +1,33 @@
 <?php
 
-
 class App {
 	public static $inst;
+	public $db = NULL;
+	public $data = NULL;
+	
 	private function __construct() {
-		
+		ORM::configure('sqlite:'.APP_DIR.'database.sqlite');
+		$this->db = ORM::get_db();
 	}
 	
-	public function view($page = NULL) {
-		echo "The index page";
+	public function render($file, $as_string = FALSE) {
+		foreach ($this->data as $k=>$v) 
+			$$k = $v;
+		ob_start();
+		include 'views/' . $file . '.php';
+		$yield = ob_get_clean();
+		if ($as_string) return $yield;
+		echo $yield;
+	}
+	
+	public function index($page = NULL) {	
+		# Load up the navigation items
+		# Load up the starting page
+		$this->data['nav_items'] = ORM::for_table('navigation')->find_many();
+		$this->data['page'] = ORM::for_table('page')->find_one();
+		$this->data['sidebar'] = $this->render('sidebar', TRUE);
+		$this->data['index'] = $this->render('index', TRUE);
+		$this->render('layout');
 	}
 	
 	public function process_page($file_name) {
@@ -20,24 +39,45 @@ class App {
 		$file = Markdown($file); 
 		#Traverse the document finding the doc title <h1> and all child titles
 		$html = str_get_html($file);
-		$page['title'] = $html->find('h1', 0)->plaintext;
-		$page['content'] = $file;
+		$p['title'] = $html->find('h1', 0)->plaintext;
+		$p['content'] = $file;
+		#Save the first nav item
+		$first_nav = ORM::for_table('navigation')->create();
+		$first_nav->name = $p['title'];
+		$first_nav->parent_id = 0;
+		$first_nav->level = 1;
+		$first_nav->save();
+		# Save the page
+		$page = ORM::for_table('page')->create();
+		$page->title = $p['title'];
+		$page->content = $p['content'];
+		$page->save();
+		
 		$nav_items = array();
 		$curr_item = NULL;
 		# Traverse the dom tree and pull in each nested category
-		$base_item = 'h2';
-		$elems = array('h2','h3','h4','h5','h6');
+		$parent_ids = array();
+		$parent_ids[1] = $first_nav->id;
+
 		foreach ($html->find('h2,h3,h4,h5,h6') as $item) {
 			# Traverse through directory and find each child and associate it with a parent
-			// Insert the item
-			// set current_tag and parent_id
-			// With each when switching from h2 to h3...maintain same parent id...but when going from h3 to h4...the new parent is h3...keep following the same parent until you see the base tag again. Then, start all over again
+			$number = intval(str_replace('h','',$item->tag));
+			$nav = ORM::for_table('navigation')->create();
+			$nav->name = $item->plaintext;
+			$pindex = $number - 1;
+			$nav->parent_id = isset($parent_ids[$pindex]) ? $parent_ids[$pindex] : 0;
+			$nav->level = $number;
+			$nav->save();
+			$parent_ids[$number] = $nav->id;
+			# Insert item
 		}
-		echo $title;
-		die();
 	}
 	
 	public function rebuild_pages() {
+		# Delete everything from the database
+		$this->db->exec("DELETE FROM navigation");
+		$this->db->exec("DELETE FROM page");
+		
 		$dir = ROOT_DIR.'docs/';
 		
 		$handle = opendir($dir); 
@@ -55,8 +95,10 @@ class App {
 			$arg = $paths[0];
 			if ($arg == 'rebuild-pages') {
 				$this->rebuild_pages();
+			} else {
+				$this->index($arg);
 			}
-		} else { $this->view(); }
+		} else { $this->index(); }
 	}
 	
 
