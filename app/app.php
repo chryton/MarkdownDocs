@@ -1,5 +1,9 @@
 <?php
 
+function slug($string) {
+    return strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', html_entity_decode(preg_replace('~&([a-z]{1,2})(?:acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($string, ENT_QUOTES, 'UTF-8')), ENT_QUOTES, 'UTF-8')), '-'));
+}
+
 class App {
 	public static $inst;
 	public $db = NULL;
@@ -24,7 +28,12 @@ class App {
 		# Load up the navigation items
 		# Load up the starting page
 		$this->data['nav_items'] = ORM::for_table('navigation')->find_many();
-		$this->data['page'] = ORM::for_table('page')->find_one();
+		if ($page) {
+			$this->data['page'] = ORM::for_table('page')->where('url_title', $page)->find_one();
+		} else {
+			$this->data['page'] = ORM::for_table('page')->find_one();
+		}
+		
 		$this->data['sidebar'] = $this->render('sidebar', TRUE);
 		$this->data['index'] = $this->render('index', TRUE);
 		$this->render('layout');
@@ -41,17 +50,22 @@ class App {
 		$html = str_get_html($file);
 		$p['title'] = $html->find('h1', 0)->plaintext;
 		$p['content'] = $file;
+		# Save the page
+		$page = ORM::for_table('page')->create();
+		$page->title = $p['title'];
+		$page->content = $p['content'];
+		$page->url_title = slug($p['title']);
+		
+		$page->save();
+		
 		#Save the first nav item
 		$first_nav = ORM::for_table('navigation')->create();
 		$first_nav->name = $p['title'];
 		$first_nav->parent_id = 0;
 		$first_nav->level = 1;
+		$first_nav->href = '/'.$page->url_title;
 		$first_nav->save();
-		# Save the page
-		$page = ORM::for_table('page')->create();
-		$page->title = $p['title'];
-		$page->content = $p['content'];
-		$page->save();
+
 		
 		$nav_items = array();
 		$curr_item = NULL;
@@ -67,6 +81,7 @@ class App {
 			$pindex = $number - 1;
 			$nav->parent_id = isset($parent_ids[$pindex]) ? $parent_ids[$pindex] : 0;
 			$nav->level = $number;
+			$nav->href = '/'.$page->url_title.'#'.slug($nav->name);
 			$nav->save();
 			$parent_ids[$number] = $nav->id;
 			# Insert item
