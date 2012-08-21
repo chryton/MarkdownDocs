@@ -158,40 +158,42 @@ body {
 	}
 
 .tpl-left-column {
-	background:#ddd;
-	position:fixed;
+	margin-top:55px;
+	background:#f1f1f1;
+	float:left;
 	z-index:1;
 	width:220px;
+	margin-left:20px;
 	height:100%;
 	top:0;
 	left:0;
-	border-right:2px solid #ccc;
+	border:1px dashed #aaa;
+	border-radius:5px;
 }
 	.tpl-left-column a {
 		color:#333;
 		text-decoration:none;
 	}
 	.tpl-left-column ul {
-		margin-top:50px;
 		list-style:none;
 	}
 	.tpl-left-column li {
 		font-weight:normal;
 		padding:2px 20px;
-		background:#dadada;
+		background:#edf2f6;
 		border-top:1px solid #ccc;
 		border-bottom:1px solid #ccc;
 		margin-top:10px;
 	}
 	.tpl-left-column li.list-item-2 {
 		margin-top:0;
-		background:#ddd;
+		background:#f1f1f1;
 		margin-left:15px;
 		border:none;
 	}
 
 .tpl-content {
-	margin-left:280px;
+	margin-left:270px;
 	padding-top:50px;
 	padding-right:50px;
 }
