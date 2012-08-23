@@ -188,7 +188,7 @@ class App {
 		/* If the user has entered the password, check it */
 		if (!empty($_POST)) {
 			if ($_POST['password'] == PASSWORD)
-				$_SESSION['logged'] = TRUE;
+				$_SESSION['logged'] = PASSWORD;
 			else
 				die('Password incorrect.');
 			$this->index();
@@ -210,9 +210,11 @@ class App {
 	public function interpret_paths() {
 		/* If password is needed, ask user for it before continuing */
 		session_start();
-		if (USE_PASSWORD_FOR_ACCESS && !isset($_SESSION['logged'])) {
-			$this->login();
-			return;
+		if (USE_PASSWORD_FOR_ACCESS) {
+			if (! (isset($_SESSION['logged']) && $_SESSION['logged'] === PASSWORD)) {
+				$this->login();
+				return;
+			}
 		}
 		
 		if (isset($_SERVER['argv'][0])) {
