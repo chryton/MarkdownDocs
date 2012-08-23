@@ -32,3 +32,17 @@ The core of this code depends on a Markdown & DOM parser. For those items, I use
 
  - **PHP Markdown**: [http://michelf.com/projects/php-markdown/](http://michelf.com/projects/php-markdown/)
  - **Simple HTML DOM**: [http://sourceforge.net/projects/simplehtmldom/](http://sourceforge.net/projects/simplehtmldom/)
+
+# Markdown Specifics
+
+## Considerations
+
+All of your Docs should contain an **h1** tag. This is what is used to generate the name of pages and their URL paths. Additionally, **h2**'s are used for level 2 navigation items. There is presently no display for h3, h4, etc...
+
+Last, if you want your documents to be in a particular order, you can append the files with a number. For example, the first file could be *00-overview.mdown*, the subsequent document could be *01-...*, and so on and so forth.
+
+To re-index pages, simply hit the URL */rebuild-pages*
+
+## Using Images
+
+You can use images by either providing a direct link to an image or relative linking to the media directory. To use an image in the media directory, simply drop in your image and create a link with the initial path being `{MEDIA_DIR}`
