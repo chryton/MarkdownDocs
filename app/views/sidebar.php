@@ -2,9 +2,9 @@
 	<ul>
 	<?php foreach ($nav_items as $nav): ?>
 		<?php if ($nav->level > 2) continue; ?>
-		<li class="list-item-<?php echo $nav->level?>">
-			<a href="<?php echo $nav->href ?>"><?php echo $nav->name ?></a>
+		<li class="list-item-<?php echo $nav->level; ?>">
+			<a href="<?php echo WEB_ROOT.$nav->href; ?>"><?php echo $nav->name; ?></a>
 		</li>	
 	<?php endforeach ?>
 	</ul>
-</div>
+</div> <!-- /tpl-left-column -->

@@ -120,9 +120,8 @@ button {width: auto; overflow: visible;}
 
 
 /* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
-::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
-::selection {background: #fcd700; color: #fff; text-shadow: none;} 
-
+::-moz-selection{background: #044A73; color: #fff; text-shadow: none;}
+::selection {background: #044A73; color: #fff; text-shadow: none;} 
 
 
 a {
@@ -173,6 +172,9 @@ body {
 	.tpl-left-column a {
 		color:#333;
 		text-decoration:none;
+	}
+	.tpl-left-column a:hover {
+		text-decoration:underline;
 	}
 	.tpl-left-column ul {
 		list-style:none;
@@ -237,4 +239,12 @@ body {
 		font-size:14px;
 		border-top:1px solid #ddd;
 		font-style:italic;
+	}
+
+.login {
+	margin-top:50px;
+	margin-left:25px;
+}
+	.login h1, .login p {
+		margin-bottom:10px;
 	}
