@@ -31,4 +31,4 @@ There are some additions in the pipeline, coming when I have a free moment
 The core of this code depends on a Markdown & DOM parser. For those items, I used the following:
 
  - **PHP Markdown**: [http://michelf.com/projects/php-markdown/](http://michelf.com/projects/php-markdown/)
- - **Simple HTML DOM**: [http://sourceforge.net/projects/simplehtmldom/](http://sourceforge.net/projects/simplehtmldom/)
+ - **Simple HTML DOM**: [http://sourceforge.net/projects/simplehtmldom/](http://sourceforge.net/projects/simplehtmldom/)	

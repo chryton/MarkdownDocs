@@ -164,8 +164,7 @@ body {
 	width:220px;
 	margin-left:20px;
 	height:100%;
-	top:0;
-	left:0;
+	top:0; left:0;
 	border:1px dashed #aaa;
 	border-radius:5px;
 }
@@ -178,6 +177,7 @@ body {
 	}
 	.tpl-left-column ul {
 		list-style:none;
+		padding-bottom:10px;
 	}
 	.tpl-left-column li {
 		font-weight:normal;
