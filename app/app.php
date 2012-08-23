@@ -17,7 +17,7 @@ class App {
 	
 	/**
 	 * App Constructor. Should only be called by inst() function
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param none
 	 * @return void
 	 */
@@ -28,7 +28,7 @@ class App {
 	
 	/**
 	 * Creates a new instance (or returns a created one) of App
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param none
 	 * @return object
 	 */
@@ -40,7 +40,7 @@ class App {
 	/**
 	 * Renders a given file, with the option
 	 * to return data as string
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param $file: name of extensionless file (assumes .php)
 	 *        $as_string: Whether or not to return as string
 	 * @return str | void
@@ -62,7 +62,7 @@ class App {
 	
 	/**
 	 * Responsible for displaying page data
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param str
 	 * @return void
 	 */
@@ -83,7 +83,7 @@ class App {
 	/**
 	 * This processes a single page, turning markdown documents
 	 * to pages and navigation items
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param str
 	 * @return void
 	 */
@@ -150,11 +150,16 @@ class App {
 	/**
 	 * This re-indexes the site by destroying all pages, navigation and
 	 * rebuilding them
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param none
 	 * @return void
 	 */
 	public function rebuild_pages() {
+		
+		/* Include what is needed to get the pages "rebuilt" */
+		include 'markdown.php'; # Used for doc conversion
+		include 'simple_html_dom.php'; # Used for doc manipulation / nav extraction
+		
 		/* Delete everything from the database */
 		$this->db->exec("DELETE FROM navigation");
 		$this->db->exec("DELETE FROM page");
@@ -174,7 +179,7 @@ class App {
 	
 	/**
 	 * Responsible for login
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param none
 	 * @return void
 	 */
@@ -198,7 +203,7 @@ class App {
 	
 	/**
 	 * Simply interprets the path
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param none
 	 * @return void
 	 */
@@ -227,7 +232,7 @@ class App {
 
 	/**
 	 * Simple function to jumpstart app
-	 * @author Scott Dover <scott@madmonkinteractive.com>
+	 * @author Scott Dover <sdover102@me.com>
 	 * @param none
 	 * @return void
 	 */
