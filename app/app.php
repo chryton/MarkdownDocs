@@ -218,10 +218,8 @@ class App {
 		}
 		
 		if (isset($_SERVER['argv'][0])) {
-			$paths = explode("/", $_SERVER['argv'][0]);
-			array_shift($paths);
-			$arg = $paths[0];
-						
+			/* Simplifying this to "cure" an issue...Real fix coming */
+			$arg = end( explode("/", $_SERVER['argv'][0]) );						
 			/* Check if pages need to be rebuilt, or display specified page */
 			if ($arg == 'rebuild-pages') {
 				$this->rebuild_pages();
