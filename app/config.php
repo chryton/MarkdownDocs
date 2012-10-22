@@ -1,5 +1,3 @@
 <?php
 
-define('DOCUMENT_TITLE', 'MarkdownDocs');
-define('PASSWORD', 'password');
-define('USE_PASSWORD_FOR_ACCESS', FALSE);
+/* Additional configuration options...none thus far */

@@ -7,9 +7,15 @@ $web_root = $web_root[strlen($web_root) - 1] == '/' ? substr($web_root, 0, strle
 define('WEB_ROOT', $web_root);
 
 /* Files necessary for run */
+include 'third-party/markdown.php'; # Used for doc conversion
+include 'third-party/simple_html_dom.php'; # Used for doc manipulation / nav extraction
 include 'config.php'; # General config info
-include 'idiorm.php'; # Used for database transactions
-include 'app.php'; # App launcher
+include 'helper.php';
+include 'third-party/idiorm.php'; # Used for database transactions
+include 'data_manager.php';
+include 'page.php';
+include 'router.php';
+include 'app.php'; # Main app logic encapsulated here
 
 /* Run the app */
 App::run();

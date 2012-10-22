@@ -1,5 +1,7 @@
 # Markdown Specifics
 
+**WARNING: These docs are out of date and will be updated soon. Please use these as an example only.**
+
 ## Considerations
 
 All of your Docs should contain an **h1** tag. This is what is used to generate the name of pages and their URL paths. Additionally, **h2**'s are used for level 2 navigation items. There is presently no display for h3, h4, etc...

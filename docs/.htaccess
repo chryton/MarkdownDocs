@@ -1,0 +1,4 @@
+# Deny access to config files
+<FilesMatch ^config.json$>
+	Deny from all
+</FilesMatch>

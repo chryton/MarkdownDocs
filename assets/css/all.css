@@ -136,9 +136,9 @@ html, body {
 }
 body {
 	font-family:Helvetica;
-	background:#fafafa;
+	background:#f0f0f0;
 	font-weight:100;
-	color:#333;
+	color:#444;
 }
 
 
@@ -146,32 +146,33 @@ body {
 	position:fixed;
 	top:0;left:0;
 	width:100%;
-	background:#343A3F;
+	background:#003348;
 	border-bottom:2px solid #1f262c;
 	color:white;
 	z-index:2;
-	padding:5px 15px;
+	padding:6px 15px;
 }
 	.tpl-header h1 {
 		font-size:18px;
+		font-weight: normal;
 	}
 
 .tpl-left-column {
-	margin-top:55px;
-	background:#f1f1f1;
-	float:left;
+	padding-top: 45px;
 	z-index:1;
 	width:220px;
-	margin-left:20px;
-	height:100%;
 	top:0; left:0;
-	border:1px dashed #aaa;
-	border-radius:5px;
+	position: fixed;
+	border-right:1px solid #ccc;
+	height: 1000px;
+	background: #efefef;
 }
 	.tpl-left-column a {
-		color:#333;
+		color:#444;
 		text-decoration:none;
-	}
+		font-weight: bold;
+	}	
+	
 	.tpl-left-column a:hover {
 		text-decoration:underline;
 	}
@@ -182,20 +183,19 @@ body {
 	.tpl-left-column li {
 		font-weight:normal;
 		padding:2px 20px;
-		background:#edf2f6;
-		border-top:1px solid #ccc;
-		border-bottom:1px solid #ccc;
 		margin-top:10px;
 	}
 	.tpl-left-column li.list-item-2 {
 		margin-top:0;
-		background:#f1f1f1;
-		margin-left:15px;
+		margin-left:10px;
 		border:none;
+	}
+	.tpl-left-column li.list-item-2 a {
+		font-weight: 100;
 	}
 
 .tpl-content {
-	margin-left:270px;
+	margin-left:260px;
 	padding-top:50px;
 	padding-right:50px;
 }

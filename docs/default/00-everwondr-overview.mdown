@@ -1,5 +1,7 @@
 # Markdown Docs
 
+**WARNING: These docs are out of date and will be updated soon. Please use these as an example only.**
+
 Markdown Docs is a tool to help you quickly put together documentation for a project. Somewhat inspired by [ReadTheDocs](http://readthedocs.org), Markdown Docs converts your Markdown formatted documents (duh!) into HTML. 
 
 ## Configuration Options

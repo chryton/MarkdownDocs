@@ -2,7 +2,7 @@
 
 /**
  * Markdown Docs is a small piece of experimental software used
- * to simply concert Markdown docs to HTML for easy viewing in a 
+ * to simply convert Markdown docs to HTML for easy viewing in a 
  * web browser
  */
 
